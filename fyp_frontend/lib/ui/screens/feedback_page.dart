@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:fyp_frontend/ui/root_page.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:fyp_frontend/constants.dart';
+import 'package:fyp_frontend/ui/screens/home_page.dart'; // Import HomePage
 
 class FeedbackPage extends StatefulWidget {
   @override
@@ -19,6 +22,10 @@ class _FeedbackPageState extends State<FeedbackPage> {
     var url = params.toString();
     if (await canLaunch(url)) {
       await launch(url);
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => RootPage()), // Navigate to HomePage
+      );
     } else {
       print('Could not launch $url');
     }
@@ -26,10 +33,9 @@ class _FeedbackPageState extends State<FeedbackPage> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Feedback Form"),
-      ),
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
@@ -37,12 +43,31 @@ class _FeedbackPageState extends State<FeedbackPage> {
             TextField(
               controller: _feedbackController,
               maxLines: 5,
-              decoration: InputDecoration(hintText: "Enter your feedback here"),
+              onChanged: (value) {
+                setState(() {}); // Rebuild the widget when text field changes
+              },
+              decoration: InputDecoration(
+                hintText: "Enter your feedback here",
+                border: OutlineInputBorder(),
+                fillColor: Constants.primaryColor.withOpacity(.1),
+                filled: true,
+              ),
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _sendEmail,
+              onPressed: _feedbackController.text.trim().isEmpty
+                  ? null // Disable button when text field is empty
+                  : _sendEmail,
               child: Text('Submit Feedback'),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.white,
+                backgroundColor: Constants.primaryColor,
+                padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                textStyle: TextStyle(
+                  fontSize: size.height / 6 * 0.15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
           ],
         ),
