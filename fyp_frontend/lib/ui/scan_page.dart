@@ -7,9 +7,12 @@ import 'package:fyp_frontend/constants.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
-import 'dart:html' as html;
+//import 'dart:html' as html;
 import 'dart:ui' as ui;
 import 'package:fyp_frontend/ui/screens/results_page.dart'; // Import the ResultsPage
+
+final String serverUrl = kIsWeb ? "http://127.0.0.1:5000/predict" : "http://10.0.2.2:5000/predict";
+
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -155,7 +158,7 @@ class _ScanPageState extends State<ScanPage> {
 
   Future<void> _uploadImage(Uint8List data, String filename) async {
     var uri = Uri.parse(
-        "http://127.0.0.1:5000/predict"); // Update with the correct endpoint
+        serverUrl); // Update with the correct endpoint
     var request = http.MultipartRequest("POST", uri);
     request.files.add(http.MultipartFile.fromBytes(
       'image', // Ensure this matches the key expected by Flask
@@ -194,7 +197,7 @@ class _ScanPageState extends State<ScanPage> {
 
   Future<Uint8List> _uploadImageXAI(Uint8List data, String filename) async {
     var uri = Uri.parse(
-        "http://127.0.0.1:5000/predictXai"); // Update with the correct endpoint
+        "$serverUrl" + "Xai"); // Update with the correct endpoint
     var request = http.MultipartRequest("POST", uri);
     request.files.add(http.MultipartFile.fromBytes(
       'image', // Ensure this matches the key expected by Flask

@@ -34,7 +34,7 @@ class Disease {
         imageURL: 'assets/images/blacksigatoka.png',
         isFavorated: true,
         decription:
-        'Black Sigatoka is a leaf spot disease of banana. It is an important economic banana disease in many countries around the world. Severely infected leaves can die, significantly reducing fruit yield, and causing mixed and premature ripening of fruit bunches. Early leaf symptoms are tiny reddish-rusty brown flecks that are most evident on the underside of leaves. These gradually lengthen, widen, and darken to form reddish-brown or dark brown or black leaf streaks. The early streaks run parallel to the leaf veins and are more evident on the underside of the leaf. The streaks broaden and become visible on both leaf surfaces. The streaks expand and become more oval shaped, and the centre of the lesion becomes sunken and turns grey over time. At this stage a yellow halo may develop around the edge of the lesion. In susceptible banana cultivars, high levels of disease can cause large areas of the leaf to die, which can lead to total leaf collapse. As leaves die, fruit yield is reduced and ripening of bunches can be uneven.',
+        "Black Sigatoka, caused by the fungus Mycosphaerella fijiensis, is a highly destructive leaf spot disease that significantly impacts banana cultivation worldwide. This disease is notorious for its ability to cause severe defoliation, which dramatically reduces the plant's photosynthetic capacity, thereby hindering growth and fruit development. Black Sigatoka manifests as small, streak-like lesions on the leaves, which evolve into larger necrotic areas with a characteristic black color. The disease cycle is accelerated by high humidity and warm temperatures, conditions prevalent in many of the world's banana-producing regions. Effective management of Black Sigatoka involves an integrated approach, including the use of resistant banana varieties, timely application of fungicides, and the adoption of cultural practices that reduce humidity around the foliage, such as proper spacing and pruning. Additionally, regular monitoring and removal of infected leaves can help in controlling the spread of the disease. Given its rapid spread and resistance to treatment, Black Sigatoka poses a significant challenge to sustainable banana production, necessitating ongoing research and adaptation of control measures.",
         isSelected: false),
     Disease(
         diseaseId: 1,
@@ -46,8 +46,7 @@ class Disease {
         imageURL: 'assets/images/cordana.png',
         isFavorated: false,
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',
+        'Cordana leaf spot disease, caused by the fungus Cordana musae, is a notable fungal disease that affects banana leaves, posing a threat to banana cultivation worldwide. This disease is characterized by the appearance of small, dark brown to black spots on the leaves, which can coalesce into larger necrotic areas, ultimately leading to reduced photosynthesis capability and overall vitality of the plant. The spots often have a yellow halo around them, making them easily distinguishable from other leaf spot diseases. Cordana leaf spot primarily targets weakened or stressed plants, gaining entry through wounds or natural openings, and is exacerbated by high humidity and wet conditions. The disease cycle is rapid, and if left unchecked, can lead to significant yield losses. Effective management strategies include the use of resistant banana varieties, implementation of good agricultural practices to reduce plant stress, regular monitoring for early detection, and, if necessary, the application of fungicides. Maintaining a clean field by removing infected plant debris also helps in controlling the spread of this disease, ensuring the sustainability of banana production.',
         isSelected: false),
     Disease(
         diseaseId: 3,
@@ -59,8 +58,7 @@ class Disease {
         imageURL: 'assets/images/fusariumwilt.png',
         isFavorated: false,
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',
+        "Fusarium Wilt, also known as Panama disease, is a devastating soil-borne disease caused by the fungus Fusarium oxysporum f. sp. cubense (Foc), which affects banana plants globally. This lethal disease is characterized by the wilting and yellowing of leaves, starting from the lower older leaves and progressing to the upper younger ones, eventually leading to the entire plant's death. Fusarium Wilt attacks the plant's vascular system, blocking water and nutrient flow, causing the internal tissues of the banana plant to turn a reddish-brown color. The disease thrives in warm, moist soil conditions and can remain dormant in the soil for decades, making it incredibly challenging to eradicate once it has established in a plantation. The spread of Panama disease is primarily through infected planting materials, soil, and water, and it has been responsible for significant economic losses in the banana industry. Controlling the disease focuses on preventive measures, including the use of disease-free planting material, crop rotation, and the development and use of resistant banana varieties. Due to its severe impact on banana production and limited effective treatment options, Fusarium Wilt remains one of the most feared diseases in the banana cultivation sector.",
         isSelected: false),
     Disease(
         diseaseId: 4,
@@ -72,8 +70,7 @@ class Disease {
         imageURL: 'assets/images/pestalotiopsis.png',
         isFavorated: true,
         decription:
-        'This plant is one of the best plant. It grows in most of the regions in the world and can survive'
-            'even the harshest weather condition.',
+        'Pestalotiopsis disease, caused by the fungal species belonging to the genus Pestalotiopsis, is an emerging threat to banana cultivation, manifesting as leaf spot and blight. This disease is marked by the appearance of small, water-soaked spots on banana leaves that gradually enlarge and become necrotic with gray centers and dark brown margins, often leading to leaf tissue death. In severe infections, these lesions coalesce, causing significant defoliation and weakening of the plant. Pestalotiopsis thrives in warm, humid conditions, favoring its proliferation and spread, especially in regions with dense planting and where moisture remains on leaf surfaces for extended periods. The fungus is known for its opportunistic behavior, often attacking plants that are already stressed by environmental factors, poor nutrition, or other diseases. Management of Pestalotiopsis disease in bananas includes the implementation of cultural practices such as ensuring good air circulation within plantations to reduce leaf wetness, removing and destroying infected plant debris to reduce the source of inoculum, and, when necessary, applying fungicides. Early detection and prompt action are crucial in minimizing the impact of this disease on banana production.',
         isSelected: false),
   ];
 }

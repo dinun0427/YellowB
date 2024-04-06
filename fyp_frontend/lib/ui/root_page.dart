@@ -20,7 +20,7 @@ class _RootPageState extends State<RootPage> {
   int bottomNavIndex = 0;
 
   //List of the pages
-  List<Widget> pages = const [
+  List<Widget> pages = [
       HomePage(),
       FeedbackPage(),
       CartPage(),
