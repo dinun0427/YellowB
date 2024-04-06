@@ -132,3 +132,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+onnx_model.onnx
+fyp.h5
