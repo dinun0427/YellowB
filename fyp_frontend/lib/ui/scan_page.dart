@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:fyp_frontend/constants.dart';
+import 'package:fyp_frontend/models/plant.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
@@ -32,10 +33,10 @@ class _ScanPageState extends State<ScanPage> {
 
   final List<String> diseaseList = [
     'Black Sigatoka',
-    'Cordana',
+    'Cordana Leaf Spot',
     'Healthy',
     'Unrecognized Disease',
-    'Panama',
+    'Fusarium Wilt',
     'Pestalotiopsis',
   ];
 
@@ -172,8 +173,15 @@ class _ScanPageState extends State<ScanPage> {
       print("Response from the server: $responseBody");
       Map<String, dynamic> apiResponse = jsonDecode(responseBody);
       diseaseIndex = int.parse(apiResponse['predicted_class']);
-      predictedClass =
-          diseaseList[diseaseIndex!]; // Update your UI based on the response
+      // Assuming you decode the API response and obtain `predictedClass`
+String predictedClass = diseaseList[int.parse(apiResponse['predicted_class'])];
+// Find the matching Disease object
+Disease detectedDisease = Disease.diseaseList.firstWhere((disease) => disease.diseaseName == predictedClass);
+// Extract the culturalPractices text
+String culturalPractices = detectedDisease.culturalPractices;
+String chemicalControl = detectedDisease.chemicalControl;
+String nutrientManagement = detectedDisease.nutrientManagement;
+
       double confidenceLevel = double.parse(apiResponse['confidence_score']);
       print(predictedClass);
 
@@ -187,6 +195,9 @@ class _ScanPageState extends State<ScanPage> {
             xaiImage: xaiImage!,
             confidenceLevel: confidenceLevel,
             uploadedImage: data, // Pass the uploaded image
+            culturalPractices: culturalPractices, // Pass the cultural practices text
+            chemicalControl: chemicalControl,
+            nutrientManagement: nutrientManagement, // Pass the nutrient management text
           ),
         ),
       );

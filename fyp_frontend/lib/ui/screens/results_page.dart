@@ -7,14 +7,20 @@ class ResultsPage extends StatefulWidget {
   final Uint8List xaiImage;
   final double confidenceLevel;
   final Uint8List uploadedImage;
+  final String culturalPractices; // Add this line
+  final String chemicalControl;
+  final String nutrientManagement; // Add this line
 
-  const ResultsPage(
-      {Key? key,
-      required this.diseaseName,
-      required this.xaiImage,
-      required this.confidenceLevel,
-      required this.uploadedImage})
-      : super(key: key);
+  const ResultsPage({
+    Key? key,
+    required this.diseaseName,
+    required this.xaiImage,
+    required this.confidenceLevel,
+    required this.uploadedImage,
+    required this.culturalPractices, // Add this line
+    required this.chemicalControl,
+    required this.nutrientManagement, // Add this line
+  }) : super(key: key);
 
   @override
   _ResultsPageState createState() => _ResultsPageState();
@@ -23,72 +29,96 @@ class ResultsPage extends StatefulWidget {
 class _ResultsPageState extends State<ResultsPage> {
   @override
   Widget build(BuildContext context) {
-    if (widget.diseaseName == 'Unrecognized Disease' || widget.confidenceLevel < 0.9) {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Results'),
-        ),
-        body: Center(
-          child: Text(
-            'Unrecognizable',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: Constants.blackColor,
-            ),
-          ),
-        ),
-      );
-    } else {
-      return Scaffold(
-        appBar: AppBar(
-          title: Text('Results'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Results'),
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: Column(
             children: [
               Container(
-                color: Constants.primaryColor.withOpacity(.1),
-                child: Column(
-                  children: [
-                    Image.memory(widget.uploadedImage),
-                    Text(
-                      'Disease Detected: ${widget.diseaseName}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Constants.blackColor,
+                margin: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 227, 227, 227),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(50),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: Image.memory(widget.uploadedImage),
+                        ),
                       ),
-                    ),
-                    Text(
-                      'Confidence Level: ${(widget.confidenceLevel * 100).toStringAsFixed(2)}%',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 24,
-                        color: Constants.blackColor,
+                      Text(
+                        'Disease Detected: ${widget.diseaseName}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                  ],
+                      Text(
+                        'Confidence Level: ${(widget.confidenceLevel * 100).toStringAsFixed(2)}%',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Text(
+                        'Cultural Practices: ${widget.culturalPractices}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Chemical Controls: ${widget.chemicalControl}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        'Nutrient Management: ${widget.nutrientManagement}',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 10),
-              Expanded(
+              Container(
+                margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                decoration: BoxDecoration(
+                  color: Color.fromARGB(255, 227, 227, 227),
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Constants.primaryColor.withOpacity(.1),
-                      borderRadius: BorderRadius.circular(10),
+                  padding: const EdgeInsets.all(10),
+                  child: Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: ClipRRect(
+                        child: Image.memory(widget.xaiImage),
+                      ),
                     ),
-                    child: Image.memory(widget.xaiImage),
                   ),
                 ),
               ),
             ],
           ),
         ),
-      );
-    }
+      ),
+    );
   }
 }

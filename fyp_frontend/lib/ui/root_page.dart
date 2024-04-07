@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fyp_frontend/constants.dart';
 import 'package:fyp_frontend/models/plant.dart';
 import 'package:fyp_frontend/ui/scan_page.dart';
-import 'package:fyp_frontend/ui/screens/cart_page.dart';
+import 'package:fyp_frontend/ui/screens/info_page.dart';
 import 'package:fyp_frontend/ui/screens/feedback_page.dart';
 import 'package:fyp_frontend/ui/screens/home_page.dart';
 import 'package:fyp_frontend/ui/screens/profile_page.dart';
@@ -23,7 +23,7 @@ class _RootPageState extends State<RootPage> {
   List<Widget> pages = [
       HomePage(),
       FeedbackPage(),
-      CartPage(),
+      InfoPage(),
       ProfilePage(),
   ];
 
@@ -31,7 +31,7 @@ class _RootPageState extends State<RootPage> {
   List<IconData> iconList = [
     Icons.home,
     Icons.feedback,
-    Icons.shopping_cart,
+    Icons.info,
     Icons.person,
   ];
 
@@ -39,7 +39,7 @@ class _RootPageState extends State<RootPage> {
   List<String> titleList = [
     'Home',
     'Feedback',
-    'Cart',
+    'About App',
     'Profile',
   ];
 
