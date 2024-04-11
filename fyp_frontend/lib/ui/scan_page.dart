@@ -10,10 +10,10 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 //import 'dart:html' as html;
 import 'dart:ui' as ui;
-import 'package:fyp_frontend/ui/screens/results_page.dart'; // Import the ResultsPage
+import 'package:fyp_frontend/ui/screens/results_page.dart'; 
 
-final String serverUrl = kIsWeb ? "http://127.0.0.1:5000/predict" : "http://10.0.2.2:5000/predict";
-
+final String serverUrl =
+    kIsWeb ? "http://127.0.0.1:5000/predict" : "http://10.0.2.2:5000/predict";
 
 class ScanPage extends StatefulWidget {
   const ScanPage({Key? key}) : super(key: key);
@@ -158,8 +158,7 @@ class _ScanPageState extends State<ScanPage> {
   }
 
   Future<void> _uploadImage(Uint8List data, String filename) async {
-    var uri = Uri.parse(
-        serverUrl); // Update with the correct endpoint
+    var uri = Uri.parse(serverUrl); // Update with the correct endpoint
     var request = http.MultipartRequest("POST", uri);
     request.files.add(http.MultipartFile.fromBytes(
       'image', // Ensure this matches the key expected by Flask
@@ -174,13 +173,15 @@ class _ScanPageState extends State<ScanPage> {
       Map<String, dynamic> apiResponse = jsonDecode(responseBody);
       diseaseIndex = int.parse(apiResponse['predicted_class']);
       // Assuming you decode the API response and obtain `predictedClass`
-String predictedClass = diseaseList[int.parse(apiResponse['predicted_class'])];
+      String predictedClass =
+          diseaseList[int.parse(apiResponse['predicted_class'])];
 // Find the matching Disease object
-Disease detectedDisease = Disease.diseaseList.firstWhere((disease) => disease.diseaseName == predictedClass);
+      Disease detectedDisease = Disease.diseaseList
+          .firstWhere((disease) => disease.diseaseName == predictedClass);
 // Extract the culturalPractices text
-String culturalPractices = detectedDisease.culturalPractices;
-String chemicalControl = detectedDisease.chemicalControl;
-String nutrientManagement = detectedDisease.nutrientManagement;
+      String culturalPractices = detectedDisease.culturalPractices;
+      String chemicalControl = detectedDisease.chemicalControl;
+      String nutrientManagement = detectedDisease.nutrientManagement;
 
       double confidenceLevel = double.parse(apiResponse['confidence_score']);
       print(predictedClass);
@@ -195,9 +196,11 @@ String nutrientManagement = detectedDisease.nutrientManagement;
             xaiImage: xaiImage!,
             confidenceLevel: confidenceLevel,
             uploadedImage: data, // Pass the uploaded image
-            culturalPractices: culturalPractices, // Pass the cultural practices text
+            culturalPractices:
+                culturalPractices, // Pass the cultural practices text
             chemicalControl: chemicalControl,
-            nutrientManagement: nutrientManagement, // Pass the nutrient management text
+            nutrientManagement:
+                nutrientManagement, // Pass the nutrient management text
           ),
         ),
       );
@@ -207,8 +210,8 @@ String nutrientManagement = detectedDisease.nutrientManagement;
   }
 
   Future<Uint8List> _uploadImageXAI(Uint8List data, String filename) async {
-    var uri = Uri.parse(
-        "$serverUrl" + "Xai"); // Update with the correct endpoint
+    var uri =
+        Uri.parse("$serverUrl" + "Xai"); // Update with the correct endpoint
     var request = http.MultipartRequest("POST", uri);
     request.files.add(http.MultipartFile.fromBytes(
       'image', // Ensure this matches the key expected by Flask

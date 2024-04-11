@@ -13,7 +13,6 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app) 
 
-# Load your trained model
 sess = InferenceSession('E:/YellowB/fyp_backend/onnx_model.onnx')
 
 @app.route('/predictXai', methods=['POST'])
@@ -24,24 +23,19 @@ def predictXai():
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)  # Use VGG16 specific preprocessing
 
-    # Use the model to make a prediction
-    input_name = sess.get_inputs()[0].name
+    input_name = sess.get_inputs()[0].name # Use the model to make a prediction
     classes = sess.run(None, {input_name: x})[0]
     predicted_class = str(np.argmax(classes))
 
-    # Create a LIME explainer
-    explainer = lime_image.LimeImageExplainer()
+    explainer = lime_image.LimeImageExplainer() # Create a LIME explainer
     explanation = explainer.explain_instance(x[0], lambda x: sess.run(None, {input_name: x})[0], top_labels=5, hide_color=0, num_samples=20)
 
-    # Get the explanation for the top class
-    temp, mask = explanation.get_image_and_mask(explanation.top_labels[0], positive_only=False, num_features=10, hide_rest=False)
+    temp, mask = explanation.get_image_and_mask(explanation.top_labels[0], positive_only=False, num_features=10, hide_rest=False) # Get the explanation for the top class
 
-    # Overlay the mask on the original image
-    img_boundry1 = mark_boundaries(temp/255.0, mask)
+    img_boundry1 = mark_boundaries(temp/255.0, mask) # Overlay the mask on the original image
     img_boundry = Image.fromarray((img_boundry1 * 255).astype(np.uint8))
 
-    # Convert the explanation image to a PNG
-    buffer = io.BytesIO()
+    buffer = io.BytesIO() # Convert the explanation image to a PNG
     img_boundry.save(buffer, format='PNG')
     img_bytes = buffer.getvalue()
 
@@ -56,8 +50,7 @@ def predict():
     x = np.expand_dims(x, axis=0)
     x = preprocess_input(x)  # Use VGG16 specific preprocessing
 
-    # Use the model to make a prediction
-    input_name = sess.get_inputs()[0].name
+    input_name = sess.get_inputs()[0].name # Use the model to make a prediction
     classes = sess.run(None, {input_name: x})[0]
     predicted_class = np.argmax(classes)
     confidence_score = classes[0][predicted_class]  # Get the confidence score of the predicted class

@@ -51,7 +51,7 @@ class Disease {
       decription:
           'Cordana leaf spot disease, caused by the fungus Cordana musae, is a notable fungal disease that affects banana leaves, posing a threat to banana cultivation worldwide. This disease is characterized by the appearance of small, dark brown to black spots on the leaves, which can coalesce into larger necrotic areas, ultimately leading to reduced photosynthesis capability and overall vitality of the plant. The spots often have a yellow halo around them, making them easily distinguishable from other leaf spot diseases. Cordana leaf spot primarily targets weakened or stressed plants, gaining entry through wounds or natural openings, and is exacerbated by high humidity and wet conditions. The disease cycle is rapid, and if left unchecked, can lead to significant yield losses. Effective management strategies include the use of resistant banana varieties, implementation of good agricultural practices to reduce plant stress, regular monitoring for early detection, and, if necessary, the application of fungicides. Maintaining a clean field by removing infected plant debris also helps in controlling the spread of this disease, ensuring the sustainability of banana production.',
     ),
-    Disease(
+    /*Disease(
       diseaseId: 3,
       diseaseName: 'Healthy',
       cause: "",
@@ -70,7 +70,7 @@ class Disease {
       nutrientManagement: "",
       imageURL: 'assets/images/cordana.png',
       decription: "",
-    ),
+    ),*/
     Disease(
       diseaseId: 5,
       diseaseName: 'Fusarium Wilt',
