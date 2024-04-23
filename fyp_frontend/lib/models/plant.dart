@@ -42,16 +42,16 @@ class Disease {
       cause:
           "Cordana leaf spot is primarily caused by the fungi Cordana musae (Zimm.) Höhn. and Kirramyces epicoccoides (Corda) Petr., which thrive in warm, humid environments.",
       chemicalControl:
-          "- Copper-based fungicides can provide a protective barrier on the leaf surface, preventing fungal spores from infecting the plant.\n\n- For established infections, systemic fungicides (those that are absorbed and moved throughout the plant) can be effective. However, always follow label directions and local regulations regarding fungicide use.",
+          "\n\n- Copper-based fungicides can provide a protective barrier on the leaf surface, preventing fungal spores from infecting the plant.\n\n- For established infections, systemic fungicides (those that are absorbed and moved throughout the plant) can be effective. However, always follow label directions and local regulations regarding fungicide use.",
       culturalPractices:
-          "- Regularly remove and destroy infected plant material to reduce the spread of the fungus. Clean tools and equipment to prevent transmission to healthy plants.\n\n- Avoid overhead irrigation to minimize leaf wetness, which can promote fungal growth. Use drip irrigation or water at the base of the plant.\n\n- Ensure adequate spacing between plants to improve air circulation, which can help reduce humidity around the leaves.\n\n- Manage weeds around the banana plants, as they can harbor pests and diseases, including Cordana leaf spot.",
+          "\n\n- Regularly remove and destroy infected plant material to reduce the spread of the fungus. Clean tools and equipment to prevent transmission to healthy plants.\n\n- Avoid overhead irrigation to minimize leaf wetness, which can promote fungal growth. Use drip irrigation or water at the base of the plant.\n\n- Ensure adequate spacing between plants to improve air circulation, which can help reduce humidity around the leaves.\n\n- Manage weeds around the banana plants, as they can harbor pests and diseases, including Cordana leaf spot.",
       nutrientManagement:
-          "- Ensure a balanced application of essential nutrients, particularly nitrogen (N), phosphorus (P), and potassium (K), based on soil test results.\n\n- Application of micronutrients, such as zinc, manganese, and boron, can also support plant health and may enhance disease resistance.\n\n- Maintain soil pH within the optimal range for banana cultivation (5.5 to 6.5) to ensure nutrient availability and uptake.",
+          "\n\n- Ensure a balanced application of essential nutrients, particularly nitrogen (N), phosphorus (P), and potassium (K), based on soil test results.\n\n- Application of micronutrients, such as zinc, manganese, and boron, can also support plant health and may enhance disease resistance.\n\n- Maintain soil pH within the optimal range for banana cultivation (5.5 to 6.5) to ensure nutrient availability and uptake.",
       imageURL: 'assets/images/cordana.png',
       decription:
           'Cordana leaf spot disease, caused by the fungus Cordana musae, is a notable fungal disease that affects banana leaves, posing a threat to banana cultivation worldwide. This disease is characterized by the appearance of small, dark brown to black spots on the leaves, which can coalesce into larger necrotic areas, ultimately leading to reduced photosynthesis capability and overall vitality of the plant. The spots often have a yellow halo around them, making them easily distinguishable from other leaf spot diseases. Cordana leaf spot primarily targets weakened or stressed plants, gaining entry through wounds or natural openings, and is exacerbated by high humidity and wet conditions. The disease cycle is rapid, and if left unchecked, can lead to significant yield losses. Effective management strategies include the use of resistant banana varieties, implementation of good agricultural practices to reduce plant stress, regular monitoring for early detection, and, if necessary, the application of fungicides. Maintaining a clean field by removing infected plant debris also helps in controlling the spread of this disease, ensuring the sustainability of banana production.',
     ),
-    /*Disease(
+    Disease(
       diseaseId: 3,
       diseaseName: 'Healthy',
       cause: "",
@@ -70,7 +70,7 @@ class Disease {
       nutrientManagement: "",
       imageURL: 'assets/images/cordana.png',
       decription: "",
-    ),*/
+    ),
     Disease(
       diseaseId: 5,
       diseaseName: 'Fusarium Wilt',

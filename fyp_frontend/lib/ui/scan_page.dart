@@ -166,46 +166,51 @@ class _ScanPageState extends State<ScanPage> {
       filename: filename,
     ));
 
-    var response = await request.send();
-    if (response.statusCode == 200) {
-      String responseBody = await response.stream.bytesToString();
-      print("Response from the server: $responseBody");
-      Map<String, dynamic> apiResponse = jsonDecode(responseBody);
-      diseaseIndex = int.parse(apiResponse['predicted_class']);
-      // Assuming you decode the API response and obtain `predictedClass`
-      String predictedClass =
-          diseaseList[int.parse(apiResponse['predicted_class'])];
-// Find the matching Disease object
-      Disease detectedDisease = Disease.diseaseList
-          .firstWhere((disease) => disease.diseaseName == predictedClass);
-// Extract the culturalPractices text
-      String culturalPractices = detectedDisease.culturalPractices;
-      String chemicalControl = detectedDisease.chemicalControl;
-      String nutrientManagement = detectedDisease.nutrientManagement;
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        String responseBody = await response.stream.bytesToString();
+        print("Response from the server: $responseBody");
+        Map<String, dynamic> apiResponse = jsonDecode(responseBody);
+        diseaseIndex = int.parse(apiResponse['predicted_class']);
+        // Assuming you decode the API response and obtain `predictedClass`
+        String predictedClass =
+            diseaseList[int.parse(apiResponse['predicted_class'])];
+  // Find the matching Disease object
+        Disease detectedDisease = Disease.diseaseList
+            .firstWhere((disease) => disease.diseaseName == predictedClass);
+  // Extract the culturalPractices text
+        String culturalPractices = detectedDisease.culturalPractices;
+        String chemicalControl = detectedDisease.chemicalControl;
+        String nutrientManagement = detectedDisease.nutrientManagement;
 
-      double confidenceLevel = double.parse(apiResponse['confidence_score']);
-      print(predictedClass);
+        double confidenceLevel = double.parse(apiResponse['confidence_score']);
+        print(predictedClass);
 
-      // Navigate to ResultsPage with the disease name
-      xaiImage = await _uploadImageXAI(data, filename);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => ResultsPage(
-            diseaseName: predictedClass!,
-            xaiImage: xaiImage!,
-            confidenceLevel: confidenceLevel,
-            uploadedImage: data, // Pass the uploaded image
-            culturalPractices:
-                culturalPractices, // Pass the cultural practices text
-            chemicalControl: chemicalControl,
-            nutrientManagement:
-                nutrientManagement, // Pass the nutrient management text
+        // Navigate to ResultsPage with the disease name
+        xaiImage = await _uploadImageXAI(data, filename);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultsPage(
+              diseaseName: predictedClass!,
+              xaiImage: xaiImage!,
+              confidenceLevel: confidenceLevel,
+              uploadedImage: data, // Pass the uploaded image
+              culturalPractices:
+                  culturalPractices, // Pass the cultural practices text
+              chemicalControl: chemicalControl,
+              nutrientManagement:
+                  nutrientManagement, // Pass the nutrient management text
+            ),
           ),
-        ),
-      );
-    } else {
-      print('Failed to upload image: ${response.statusCode}');
+        );
+      } else {
+        print('Failed to upload image: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Caught error: $e');
+      // Handle the error
     }
   }
 
@@ -219,11 +224,17 @@ class _ScanPageState extends State<ScanPage> {
       filename: filename,
     ));
 
-    var response = await request.send();
-    if (response.statusCode == 200) {
-      var responseBody = await response.stream.toBytes();
-      return responseBody;
-    } else {
+    try {
+      var response = await request.send();
+      if (response.statusCode == 200) {
+        var responseBody = await response.stream.toBytes();
+        return responseBody;
+      } else {
+        throw Exception('Failed to upload image');
+      }
+    } catch (e) {
+      print('Caught error: $e');
+      // Handle the error
       throw Exception('Failed to upload image');
     }
   }

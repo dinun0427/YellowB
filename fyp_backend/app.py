@@ -28,7 +28,7 @@ def predictXai():
     predicted_class = str(np.argmax(classes))
 
     explainer = lime_image.LimeImageExplainer() # Create a LIME explainer
-    explanation = explainer.explain_instance(x[0], lambda x: sess.run(None, {input_name: x})[0], top_labels=5, hide_color=0, num_samples=20)
+    explanation = explainer.explain_instance(x[0], lambda x: sess.run(None, {input_name: x})[0], top_labels=5, hide_color=0, num_samples=50)
 
     temp, mask = explanation.get_image_and_mask(explanation.top_labels[0], positive_only=False, num_features=10, hide_rest=False) # Get the explanation for the top class
 

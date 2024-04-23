@@ -14,7 +14,7 @@ class _HomePageState extends State<HomePage> {
   int SelectedIndex = -1;
   int pressedIndex = -1;
 
-  List<Disease> _diseaseList = Disease.diseaseList;
+  List<Disease> _diseaseList = Disease.diseaseList.where((disease) => disease.diseaseId != 3 && disease.diseaseId != 4).toList();
 
   //Toggle Favorite button
   bool toggleIsFavorated(bool isFavorited) {
