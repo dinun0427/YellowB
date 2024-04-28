@@ -34,10 +34,9 @@ class _ScanPageState extends State<ScanPage> {
   final List<String> diseaseList = [
     'Black Sigatoka',
     'Cordana Leaf Spot',
-    'Healthy',
-    'Unrecognized Disease',
     'Fusarium Wilt',
-    'Pestalotiopsis',
+    'Healthy',
+    'Pestalotiopsis'
   ];
 
   @override

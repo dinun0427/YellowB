@@ -29,7 +29,7 @@ class ResultsPage extends StatefulWidget {
 class _ResultsPageState extends State<ResultsPage> {
   @override
   Widget build(BuildContext context) {
-    if (widget.diseaseName == 'Unrecognized Disease' || widget.confidenceLevel < 0.90) {
+    if (widget.confidenceLevel < 0.90) {
       return Scaffold(
         appBar: AppBar(
           title: Text('Results'),

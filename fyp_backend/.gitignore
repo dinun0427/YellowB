@@ -134,4 +134,3 @@ dmypy.json
 cython_debug/
 
 onnx_model.onnx
-fyp.h5
